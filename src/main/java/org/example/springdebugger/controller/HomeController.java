@@ -54,13 +54,9 @@ public class HomeController {
 
     @PostMapping("/add-random-customer")
     public String addRandomCustomer() {
-        customerService.createRandomCustomer();
-        return "redirect:/";
-    }
-
-    @PostMapping("/start-transaction-chain")
-    public String startTransactionChain() {
         transactionLevel1Service.startTransactionChain();
         return "redirect:/";
     }
+
+
 }
