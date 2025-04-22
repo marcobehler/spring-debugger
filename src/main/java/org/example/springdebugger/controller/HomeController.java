@@ -28,7 +28,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model, HttpServletRequest request) {
         // Hello world message
-        String message = "Hello, World!";
+        String message = "Welcome to my next AI Startup!";
 
         // My name (read from properties)
         String name = developerName;
