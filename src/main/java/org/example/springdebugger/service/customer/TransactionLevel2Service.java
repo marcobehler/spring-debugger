@@ -18,8 +18,8 @@ public class TransactionLevel2Service {
     }
 
     @Transactional
-    public void processTransactionLevel2() {
+    public void processTransactionLevel2(String password) {
         log.info("Processing transaction at level 2");
-        transactionLevel3Service.processTransactionLevel3();
+        transactionLevel3Service.processTransactionLevel3(password);
     }
 }

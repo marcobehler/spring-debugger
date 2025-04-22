@@ -18,8 +18,8 @@ public class TransactionLevel7Service {
     }
 
     @Transactional
-    public void processTransactionLevel7() {
+    public void processTransactionLevel7(String password) {
         log.info("Processing transaction at level 7");
-        customerService.createRandomCustomer();
+        customerService.createRandomCustomer(password);
     }
 }

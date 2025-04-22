@@ -18,8 +18,8 @@ public class TransactionLevel1Service {
     }
 
     @Transactional
-    public void startTransactionChain() {
+    public void startTransactionChain(String password) {
         log.info("Starting transaction chain at level 1");
-        transactionLevel2Service.processTransactionLevel2();
+        transactionLevel2Service.processTransactionLevel2(password);
     }
 }

@@ -25,10 +25,9 @@ public class CustomerService {
     }
 
     @Transactional
-    public void createRandomCustomer() {
+    public void createRandomCustomer(String password) {
         String username = "user_" + UUID.randomUUID().toString().substring(0, 8);
         String email = username + "@example.com";
-        String password = "password_" + UUID.randomUUID().toString().substring(0, 8);
         String firstName = getRandomFirstName();
         String lastName = getRandomLastName();
         boolean active = random.nextBoolean();

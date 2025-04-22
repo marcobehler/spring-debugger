@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Random;
+import java.util.UUID;
+
 @Controller
 public class HomeController {
 
@@ -54,7 +57,7 @@ public class HomeController {
 
     @PostMapping("/add-random-customer")
     public String addRandomCustomer() {
-        transactionLevel1Service.startTransactionChain();
+        transactionLevel1Service.startTransactionChain(UUID.randomUUID().toString().substring(0, 10));
         return "redirect:/";
     }
 
