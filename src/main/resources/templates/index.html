@@ -43,6 +43,14 @@
             <span class="label">Your IP Address:</span> 
             <span th:text="${ipAddress}">127.0.0.1</span>
         </div>
+
+        <div class="info-item" style="margin-top: 20px;">
+            <form action="/add-random-customer" method="post">
+                <button type="submit" style="padding: 10px 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Add Random Customer
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

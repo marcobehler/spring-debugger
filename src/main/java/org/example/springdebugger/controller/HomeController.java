@@ -1,24 +1,28 @@
 package org.example.springdebugger.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.example.springdebugger.service.CustomerService;
 import org.example.springdebugger.service.IpAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
 
     private final IpAddressService ipAddressService;
+    private final CustomerService customerService;
 
     @Value("${developer.name:Default Developer}")
     private String developerName;
 
     @Autowired
-    public HomeController(IpAddressService ipAddressService) {
+    public HomeController(IpAddressService ipAddressService, CustomerService customerService) {
         this.ipAddressService = ipAddressService;
+        this.customerService = customerService;
     }
 
     @GetMapping("/")
@@ -39,5 +43,11 @@ public class HomeController {
 
         // Return the view name (index.html)
         return "index";
+    }
+
+    @PostMapping("/add-random-customer")
+    public String addRandomCustomer() {
+        customerService.createRandomCustomer();
+        return "redirect:/";
     }
 }
