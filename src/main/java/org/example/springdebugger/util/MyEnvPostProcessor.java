@@ -1,4 +1,4 @@
-package org.example.springdebugger.service;
+package org.example.springdebugger.util;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;

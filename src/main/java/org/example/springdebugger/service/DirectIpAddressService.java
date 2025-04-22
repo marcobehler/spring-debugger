@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("profile5")
+@Profile("dev")
 public class DirectIpAddressService implements IpAddressService {
 
     @Override
