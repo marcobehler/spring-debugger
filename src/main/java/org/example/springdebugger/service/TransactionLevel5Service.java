@@ -10,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class TransactionLevel5Service {
 
     private static final Logger log = LoggerFactory.getLogger(TransactionLevel5Service.class);
-    private final CustomerService customerService;
+    private final TransactionLevel6Service transactionLevel6Service;
 
     @Autowired
-    public TransactionLevel5Service(CustomerService customerService) {
-        this.customerService = customerService;
+    public TransactionLevel5Service(TransactionLevel6Service transactionLevel6Service) {
+        this.transactionLevel6Service = transactionLevel6Service;
     }
 
     @Transactional
     public void processTransactionLevel5() {
         log.info("Processing transaction at level 5");
-        customerService.createRandomCustomer();
+        transactionLevel6Service.processTransactionLevel6();
     }
 }
