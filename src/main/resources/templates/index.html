@@ -52,5 +52,35 @@
             </form>
         </div>
     </div>
+
+    <div class="container" style="margin-top: 20px;">
+        <h2>Customer List</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #3498db; color: white;">
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Username</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">First Name</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Last Name</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Email</th>
+                    <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer : ${customers}" style="border: 1px solid #ddd;">
+                    <td style="padding: 10px; border: 1px solid #ddd;" th:text="${customer.username}">username</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;" th:text="${customer.firstName}">First Name</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;" th:text="${customer.lastName}">Last Name</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;" th:text="${customer.email}">email@example.com</td>
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">
+                        <span th:if="${customer.active}" style="color: green; font-weight: bold;">Active</span>
+                        <span th:unless="${customer.active}" style="color: red; font-weight: bold;">Inactive</span>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(customers)}">
+                    <td colspan="5" style="padding: 10px; text-align: center; border: 1px solid #ddd;">No customers found</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

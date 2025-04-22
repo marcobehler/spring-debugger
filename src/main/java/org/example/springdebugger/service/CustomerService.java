@@ -1,21 +1,26 @@
 package org.example.springdebugger.service;
 
+import org.example.springdebugger.model.Customer;
+import org.example.springdebugger.repository.CustomerRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 @Service
 public class CustomerService {
 
-    private final JdbcTemplate jdbcTemplate;
+    private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
+    private final CustomerRepository customerRepository;
     private final Random random = new Random();
 
     @Autowired
-    public CustomerService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     public void createRandomCustomer() {
@@ -26,10 +31,9 @@ public class CustomerService {
         String lastName = getRandomLastName();
         boolean active = random.nextBoolean();
 
-        jdbcTemplate.update(
-            "INSERT INTO customers (username, email, password, first_name, last_name, active) VALUES (?, ?, ?, ?, ?, ?)",
-            username, email, password, firstName, lastName, active
-        );
+        Customer customer = new Customer(username, email, password, firstName, lastName, active);
+        customerRepository.save(customer);
+        log.info("Created customer: {}", customer);
     }
 
     private String getRandomFirstName() {
@@ -40,5 +44,9 @@ public class CustomerService {
     private String getRandomLastName() {
         String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
         return lastNames[random.nextInt(lastNames.length)];
+    }
+
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
     }
 }

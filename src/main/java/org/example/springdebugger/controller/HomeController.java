@@ -36,10 +36,14 @@ public class HomeController {
         // Get client's IP address using the service
         String ipAddress = ipAddressService.resolveClientIpAddress(request);
 
+        // Get all customers
+        var customers = customerService.getAllCustomers();
+
         // Add attributes to the model
         model.addAttribute("message", message);
         model.addAttribute("name", name);
         model.addAttribute("ipAddress", ipAddress);
+        model.addAttribute("customers", customers);
 
         // Return the view name (index.html)
         return "index";
