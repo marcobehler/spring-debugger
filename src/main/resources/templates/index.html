@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Spring Debugger - Hello World</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .info-item {
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <h1 th:text="${message}">Hello, World!</h1>
+
+    <div class="container">
+        <div class="info-item">
+            <span class="label">Name:</span> 
+            <span th:text="${name}">Default Name</span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Your IP Address:</span> 
+            <span th:text="${ipAddress}">127.0.0.1</span>
+        </div>
+    </div>
 </body>
 </html>
