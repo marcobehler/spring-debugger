@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("profile3")
+@Profile("prod")
 public class FastlyCloudflareIpAddressService implements IpAddressService {
 
     @Override

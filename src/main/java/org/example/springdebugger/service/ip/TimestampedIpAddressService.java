@@ -1,6 +1,7 @@
 package org.example.springdebugger.service.ip;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 @Service
 @Profile("profile12")
+@Primary
 public class TimestampedIpAddressService implements IpAddressService {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
