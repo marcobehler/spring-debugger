@@ -1,9 +1,9 @@
 package org.example.springdebugger.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.example.springdebugger.service.CustomerService;
-import org.example.springdebugger.service.IpAddressService;
-import org.example.springdebugger.service.TransactionLevel1Service;
+import org.example.springdebugger.service.customer.CustomerService;
+import org.example.springdebugger.service.ip.IpAddressService;
+import org.example.springdebugger.service.customer.TransactionLevel1Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

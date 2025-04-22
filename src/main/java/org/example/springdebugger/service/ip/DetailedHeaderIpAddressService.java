@@ -1,10 +1,9 @@
-package org.example.springdebugger.service;
+package org.example.springdebugger.service.ip;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 

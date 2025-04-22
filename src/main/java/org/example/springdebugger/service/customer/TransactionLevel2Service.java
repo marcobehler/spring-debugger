@@ -1,4 +1,4 @@
-package org.example.springdebugger.service;
+package org.example.springdebugger.service.customer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

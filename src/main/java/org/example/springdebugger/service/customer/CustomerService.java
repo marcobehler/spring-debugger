@@ -1,4 +1,4 @@
-package org.example.springdebugger.service;
+package org.example.springdebugger.service.customer;
 
 import org.example.springdebugger.model.Customer;
 import org.example.springdebugger.repository.CustomerRepository;

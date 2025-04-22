@@ -1,4 +1,4 @@
-package org.example.springdebugger.service;
+package org.example.springdebugger.service.ip;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Profile;
