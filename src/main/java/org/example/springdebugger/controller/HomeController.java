@@ -3,6 +3,7 @@ package org.example.springdebugger.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.springdebugger.service.CustomerService;
 import org.example.springdebugger.service.IpAddressService;
+import org.example.springdebugger.service.TransactionLevel1Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -15,14 +16,16 @@ public class HomeController {
 
     private final IpAddressService ipAddressService;
     private final CustomerService customerService;
+    private final TransactionLevel1Service transactionLevel1Service;
 
     @Value("${developer.name:Default Developer}")
     private String developerName;
 
     @Autowired
-    public HomeController(IpAddressService ipAddressService, CustomerService customerService) {
+    public HomeController(IpAddressService ipAddressService, CustomerService customerService, TransactionLevel1Service transactionLevel1Service) {
         this.ipAddressService = ipAddressService;
         this.customerService = customerService;
+        this.transactionLevel1Service = transactionLevel1Service;
     }
 
     @GetMapping("/")
@@ -52,6 +55,12 @@ public class HomeController {
     @PostMapping("/add-random-customer")
     public String addRandomCustomer() {
         customerService.createRandomCustomer();
+        return "redirect:/";
+    }
+
+    @PostMapping("/start-transaction-chain")
+    public String startTransactionChain() {
+        transactionLevel1Service.startTransactionChain();
         return "redirect:/";
     }
 }
