@@ -14,6 +14,6 @@ public class MyEnvPostProcessor implements EnvironmentPostProcessor {
     public void postProcessEnvironment(ConfigurableEnvironment env, SpringApplication app) {
         Map<String, Object> map = new HashMap<>();
         map.put("developer.name", "<<UNDEFINED>>");
-        env.getPropertySources().addLast(new MapPropertySource("myProcessorProps", map));
+        env.getPropertySources().addFirst(new MapPropertySource("myProcessorProps", map));
     }
 }
