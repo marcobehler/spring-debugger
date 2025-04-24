@@ -18,10 +18,12 @@ public class CustomerService {
     private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
     private final CustomerRepository customerRepository;
     private final Random random = new Random();
+    private final CustomerHelper helper;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, CustomerHelper helper) {
         this.customerRepository = customerRepository;
+        this.helper = helper;
     }
 
     @Transactional
@@ -31,7 +33,6 @@ public class CustomerService {
         String firstName = getRandomFirstName();
         String lastName = getRandomLastName();
         boolean active = random.nextBoolean();
-
         Customer customer = new Customer(username, email, password, firstName, lastName, active);
         customerRepository.save(customer);
         log.info("Created customer: {}", customer);
@@ -48,6 +49,8 @@ public class CustomerService {
     }
 
     public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+        List<Customer> all = customerRepository.findAll();
+        helper.trace(all);
+        return all;
     }
 }
