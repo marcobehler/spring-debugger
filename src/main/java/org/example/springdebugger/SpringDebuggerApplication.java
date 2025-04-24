@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource("classpath:applicationContext.xml")
+@ImportResource("classpath:legacy-context.xml")
 public class SpringDebuggerApplication {
 
     public static void main(String[] args) {
