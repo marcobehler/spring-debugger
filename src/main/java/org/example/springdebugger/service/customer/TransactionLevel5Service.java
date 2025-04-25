@@ -20,9 +20,9 @@ public class TransactionLevel5Service {
         this.customerService = customerService;
     }
 
-    @Transactional //(propagation = Propagation.REQUIRES_NEW)
+    @Transactional (propagation = Propagation.REQUIRES_NEW)
     public void processTransactionLevel5(String password) {
-      //  customerService.createRandomCustomer(password);
+        customerService.createRandomCustomer(password);
         log.info("Processing transaction at level 5");
         transactionLevel6Service.processTransactionLevel6(password);
     }
