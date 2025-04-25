@@ -11,16 +11,19 @@ public class TransactionLevel4Service {
 
     private static final Logger log = LoggerFactory.getLogger(TransactionLevel4Service.class);
     private final TransactionLevel5Service transactionLevel5Service;
+    private final CustomerService customerService;
 
 
     @Autowired
-    public TransactionLevel4Service(TransactionLevel5Service transactionLevel5Service) {
+    public TransactionLevel4Service(TransactionLevel5Service transactionLevel5Service, CustomerService customerService) {
         this.transactionLevel5Service = transactionLevel5Service;
+        this.customerService = customerService;
     }
 
     @Transactional
     public void processTransactionLevel4(String password) {
         log.info("Processing transaction at level 4");
+       // customerService.createRandomCustomer(password);
         transactionLevel5Service.processTransactionLevel5(password);
     }
 }
