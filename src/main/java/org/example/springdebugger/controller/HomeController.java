@@ -36,7 +36,7 @@ public class HomeController {
         String message = "Welcome to my next AI Startup!";
 
         // My name (read from properties)
-        String name = developerName;
+        String accountName = developerName;
 
         // Get client's IP address using the service
         String displayName = displayNameResolver.resolveDisplayName(developerName);
@@ -46,7 +46,7 @@ public class HomeController {
 
         // Add attributes to the model
         model.addAttribute("message", message);
-        model.addAttribute("name", name);
+        model.addAttribute("name", accountName);
         model.addAttribute("displayName", displayName);
         model.addAttribute("customers", customers);
 
