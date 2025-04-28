@@ -9,3 +9,8 @@ CREATE TABLE IF NOT EXISTS customers (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     active BOOLEAN DEFAULT TRUE
 );
+
+CREATE TABLE IF NOT EXISTS whats_next (
+    step_1 varchar(255),
+    step_1_data varchar(255)
+);
