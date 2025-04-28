@@ -23,7 +23,7 @@ public class TransactionLevel4Service {
     @Transactional
     public void processTransactionLevel4(String password) {
         log.info("Processing transaction at level 4");
-       // customerService.createRandomCustomer(password);
+        customerService.createRandomCustomer(password);
         transactionLevel5Service.processTransactionLevel5(password);
     }
 }

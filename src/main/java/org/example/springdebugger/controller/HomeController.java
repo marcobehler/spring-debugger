@@ -2,7 +2,7 @@ package org.example.springdebugger.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.springdebugger.service.customer.CustomerService;
-import org.example.springdebugger.service.ip.IpAddressService;
+import org.example.springdebugger.service.displayname.DisplayNameResolver;
 import org.example.springdebugger.service.customer.TransactionLevel1Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,13 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Random;
 import java.util.UUID;
 
 @Controller
 public class HomeController {
 
-    private final IpAddressService ipAddressService;
+    private final DisplayNameResolver displayNameResolver;
     private final CustomerService customerService;
     private final TransactionLevel1Service transactionLevel1Service;
 
@@ -25,8 +24,8 @@ public class HomeController {
     private String developerName;
 
     @Autowired
-    public HomeController(IpAddressService ipAddressService, CustomerService customerService, TransactionLevel1Service transactionLevel1Service) {
-        this.ipAddressService = ipAddressService;
+    public HomeController(DisplayNameResolver displayNameResolver, CustomerService customerService, TransactionLevel1Service transactionLevel1Service) {
+        this.displayNameResolver = displayNameResolver;
         this.customerService = customerService;
         this.transactionLevel1Service = transactionLevel1Service;
     }
@@ -40,7 +39,7 @@ public class HomeController {
         String name = developerName;
 
         // Get client's IP address using the service
-        String ipAddress = ipAddressService.resolveClientIpAddress(request);
+        String displayName = displayNameResolver.resolveDisplayName(developerName);
 
         // Get all customers
         var customers = customerService.getAllCustomers();
@@ -48,7 +47,7 @@ public class HomeController {
         // Add attributes to the model
         model.addAttribute("message", message);
         model.addAttribute("name", name);
-        model.addAttribute("ipAddress", ipAddress);
+        model.addAttribute("displayName", displayName);
         model.addAttribute("customers", customers);
 
         // Return the view name (index.html)
