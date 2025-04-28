@@ -8,7 +8,7 @@ import org.springframework.core.env.MapPropertySource;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyEnvPostProcessor implements EnvironmentPostProcessor {
+public class FirstDayPrankProcessor implements EnvironmentPostProcessor {
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment env, SpringApplication app) {

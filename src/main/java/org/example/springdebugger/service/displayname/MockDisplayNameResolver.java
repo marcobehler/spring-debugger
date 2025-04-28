@@ -1,5 +1,6 @@
 package org.example.springdebugger.service.displayname;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,8 @@ import java.util.Random;
  * for testing purposes.
  */
 @Service
-@Profile("test")
+@Profile("dev")
+@Primary
 public class MockDisplayNameResolver implements DisplayNameResolver {
 
     private final Random random = new Random();
@@ -32,7 +34,6 @@ public class MockDisplayNameResolver implements DisplayNameResolver {
     @Override
     public String resolveDisplayName(String username) {
         // Return a random name from the list
-        return mockNames.get(random.nextInt(mockNames.size())) + 
-               " (Mock: " + username + ")";
+        return mockNames.get(random.nextInt(mockNames.size()));
     }
 }

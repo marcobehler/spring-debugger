@@ -14,7 +14,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  */
 @Service
 @Profile("dev")
-@Primary
 public class DebugDisplayNameResolver implements DisplayNameResolver {
 
     private final DisplayNameResolver delegate;
