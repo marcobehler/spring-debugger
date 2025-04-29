@@ -2,5 +2,5 @@ package org.example.springdebugger.service.displayname;
 
 public interface DisplayNameResolver {
 
-    String resolveDisplayName(String username);
+    String resolveDisplayName(String accountName);
 }
