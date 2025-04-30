@@ -20,7 +20,7 @@ public class HomeController {
     private final CustomerService customerService;
     private final TransactionLevel1Service transactionLevel1Service;
 
-    @Value("${developer.name:Default Developer}")
+    @Value("${developer.account:Default Developer}")
     private String developerName;
 
     @Autowired

@@ -13,7 +13,7 @@ public class FirstDayPrankProcessor implements EnvironmentPostProcessor {
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment env, SpringApplication app) {
         Map<String, Object> map = new HashMap<>();
-        map.put("developer.name", "<<UNDEFINED>>");
+        map.put("developer.account", "<<UNDEFINED>>");
         env.getPropertySources().addFirst(new MapPropertySource("myProcessorProps", map));
     }
 }
