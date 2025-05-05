@@ -69,9 +69,7 @@ class CustomerServiceTest {
     void testGetAllCustomers() {
         // Get all customers
         List<Customer> customers = customerService.getAllCustomers();
-        
-        // Verify we have at least the sample data from data.sql
-        assertTrue(customers.size() >= 4);
+        assertTrue(customers.size() >= 5);
         
         // Verify some of the sample data
         boolean foundAdmin = false;
