@@ -42,10 +42,9 @@ class CustomerServiceTest {
     void testCreateRandomCustomer() {
         // Get initial count
         int initialCount = customerService.getAllCustomers().size();
-        
         // Create a random customer
         customerService.createRandomCustomer("testPassword123");
-        
+
         // Get updated list
         List<Customer> customers = customerService.getAllCustomers();
         
