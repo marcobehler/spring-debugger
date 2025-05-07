@@ -1,5 +1,6 @@
 package org.example.springdebugger;
 
+import org.example.springdebugger.model.Customer;
 import org.example.springdebugger.service.SomeBean;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +14,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.shaded.org.apache.commons.lang3.RandomStringUtils;
 
 
 @Testcontainers
@@ -33,6 +35,27 @@ public class TransactionalTest {
     public void testCreateRandomCustomer() {
         someBean.getName();
 
+    }
+
+
+    @Test
+    @Transactional
+    public void hello() {
+        Customer c = new Customer();
+        c.setEmail("hello@hello.de");
+        c.setFirstName("John");
+        c.setLastName("Doe");
+        c.setPassword("<PASSWORD>");
+        c.setUsername(RandomStringUtils.randomAlphabetic(10));
+
+        someBean.save(c);
+        System.out.println("Insert happened here, all good");
+
+        c.setFirstName("Johnny");
+        someBean.save(c);
+        System.out.println("Nothing will ever happen now, not immediately flushed and test will rollback");
+        // TODO
+        // SHOW ME THAT THE CUSTOMER HAS NOT BEEN FLUSHED YET!
     }
 
 
