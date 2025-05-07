@@ -40,7 +40,7 @@ public class TransactionalTest {
 
     @Test
     @Transactional
-    public void hello() {
+    public void testUnflushedChanges() {
         Customer c = new Customer();
         c.setEmail("hello@hello.de");
         c.setFirstName("John");
