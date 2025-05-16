@@ -12,7 +12,6 @@ import java.util.Map;
  */
 @Service
 @Profile("dev")
-@Primary
 public class SimpleDisplayNameResolver implements DisplayNameResolver {
 
     private final Map<String, String> userToRealNameMap = Map.of(

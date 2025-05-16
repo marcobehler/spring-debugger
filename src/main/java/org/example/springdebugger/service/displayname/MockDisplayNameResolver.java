@@ -12,6 +12,7 @@ import java.util.Random;
  * for testing purposes.
  */
 @Service
+@Primary
 public class MockDisplayNameResolver implements DisplayNameResolver {
 
     private final Random random = new Random();
